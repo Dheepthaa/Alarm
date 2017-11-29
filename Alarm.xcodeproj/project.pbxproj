@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E60F5F5A1FC697A00046E429 /* Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E60F5F581FC697A00046E429 /* Alarm.xcdatamodeld */; };
+		E60F5F5D1FC69D2E0046E429 /* Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F5F5B1FC69D2E0046E429 /* Time+CoreDataClass.swift */; };
+		E60F5F5E1FC69D2E0046E429 /* Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F5F5C1FC69D2E0046E429 /* Time+CoreDataProperties.swift */; };
 		E61067771FC42A19006DF4FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61067761FC42A19006DF4FA /* AppDelegate.swift */; };
 		E61067791FC42A19006DF4FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61067781FC42A19006DF4FA /* ViewController.swift */; };
 		E610677C1FC42A19006DF4FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E610677A1FC42A19006DF4FA /* Main.storyboard */; };
@@ -14,6 +17,12 @@
 		E61067811FC42A19006DF4FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E610677F1FC42A19006DF4FA /* LaunchScreen.storyboard */; };
 		E610678C1FC42A19006DF4FA /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610678B1FC42A19006DF4FA /* AlarmTests.swift */; };
 		E61067971FC42A19006DF4FA /* AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61067961FC42A19006DF4FA /* AlarmUITests.swift */; };
+		E61067A51FC42DB1006DF4FA /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61067A41FC42DB1006DF4FA /* AlarmTableViewCell.swift */; };
+		E6A47FF91FC54399007C1D2D /* AddAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A47FF81FC54399007C1D2D /* AddAlarmTableViewCell.swift */; };
+		E6A47FFD1FC5566F007C1D2D /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A47FFC1FC5566F007C1D2D /* RepeatViewController.swift */; };
+		E6A47FFF1FC557E5007C1D2D /* RepeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A47FFE1FC557E5007C1D2D /* RepeatTableViewCell.swift */; };
+		E6A480011FC56DFF007C1D2D /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A480001FC56DFF007C1D2D /* LabelViewController.swift */; };
+		E6AE0F241FC4331B00750989 /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AE0F231FC4331B00750989 /* AlarmTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E60F5F591FC697A00046E429 /* Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alarm.xcdatamodel; sourceTree = "<group>"; };
+		E60F5F5B1FC69D2E0046E429 /* Time+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E60F5F5C1FC69D2E0046E429 /* Time+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E61067731FC42A19006DF4FA /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61067761FC42A19006DF4FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E61067781FC42A19006DF4FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,12 @@
 		E61067921FC42A19006DF4FA /* AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlarmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61067961FC42A19006DF4FA /* AlarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUITests.swift; sourceTree = "<group>"; };
 		E61067981FC42A19006DF4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E61067A41FC42DB1006DF4FA /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		E6A47FF81FC54399007C1D2D /* AddAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmTableViewCell.swift; sourceTree = "<group>"; };
+		E6A47FFC1FC5566F007C1D2D /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
+		E6A47FFE1FC557E5007C1D2D /* RepeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewCell.swift; sourceTree = "<group>"; };
+		E6A480001FC56DFF007C1D2D /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		E6AE0F231FC4331B00750989 /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +92,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E60F5F5F1FC69D7B0046E429 /* CoreData model */ = {
+			isa = PBXGroup;
+			children = (
+				E60F5F5B1FC69D2E0046E429 /* Time+CoreDataClass.swift */,
+				E60F5F5C1FC69D2E0046E429 /* Time+CoreDataProperties.swift */,
+			);
+			path = "CoreData model";
+			sourceTree = "<group>";
+		};
 		E610676A1FC42A18006DF4FA = {
 			isa = PBXGroup;
 			children = (
+				E60F5F5F1FC69D7B0046E429 /* CoreData model */,
+				E60F5F581FC697A00046E429 /* Alarm.xcdatamodeld */,
 				E61067751FC42A19006DF4FA /* Alarm */,
 				E610678A1FC42A19006DF4FA /* AlarmTests */,
 				E61067951FC42A19006DF4FA /* AlarmUITests */,
@@ -97,9 +126,15 @@
 		E61067751FC42A19006DF4FA /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				E6A480001FC56DFF007C1D2D /* LabelViewController.swift */,
+				E6A47FFC1FC5566F007C1D2D /* RepeatViewController.swift */,
+				E6A47FFE1FC557E5007C1D2D /* RepeatTableViewCell.swift */,
 				E61067761FC42A19006DF4FA /* AppDelegate.swift */,
 				E61067781FC42A19006DF4FA /* ViewController.swift */,
 				E610677A1FC42A19006DF4FA /* Main.storyboard */,
+				E61067A41FC42DB1006DF4FA /* AlarmTableViewCell.swift */,
+				E6AE0F231FC4331B00750989 /* AlarmTableViewController.swift */,
+				E6A47FF81FC54399007C1D2D /* AddAlarmTableViewCell.swift */,
 				E610677D1FC42A19006DF4FA /* Assets.xcassets */,
 				E610677F1FC42A19006DF4FA /* LaunchScreen.storyboard */,
 				E61067821FC42A19006DF4FA /* Info.plist */,
@@ -259,8 +294,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A47FF91FC54399007C1D2D /* AddAlarmTableViewCell.swift in Sources */,
+				E60F5F5E1FC69D2E0046E429 /* Time+CoreDataProperties.swift in Sources */,
 				E61067791FC42A19006DF4FA /* ViewController.swift in Sources */,
+				E6A47FFF1FC557E5007C1D2D /* RepeatTableViewCell.swift in Sources */,
+				E6A480011FC56DFF007C1D2D /* LabelViewController.swift in Sources */,
+				E60F5F5D1FC69D2E0046E429 /* Time+CoreDataClass.swift in Sources */,
+				E6AE0F241FC4331B00750989 /* AlarmTableViewController.swift in Sources */,
+				E6A47FFD1FC5566F007C1D2D /* RepeatViewController.swift in Sources */,
 				E61067771FC42A19006DF4FA /* AppDelegate.swift in Sources */,
+				E61067A51FC42DB1006DF4FA /* AlarmTableViewCell.swift in Sources */,
+				E60F5F5A1FC697A00046E429 /* Alarm.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +602,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E60F5F581FC697A00046E429 /* Alarm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E60F5F591FC697A00046E429 /* Alarm.xcdatamodel */,
+			);
+			currentVersion = E60F5F591FC697A00046E429 /* Alarm.xcdatamodel */;
+			path = Alarm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E610676B1FC42A18006DF4FA /* Project object */;
 }
