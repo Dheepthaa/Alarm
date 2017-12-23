@@ -15,150 +15,95 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tableView: UITableView!
     var datestring = "12:00 AM"
-    
-    var title1 = ["Repeat", "Label","Sound"]
-    var value1 = ["Never","Alarm","Ringtone"]
-    var obj = Time()
 
- 
-    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        let Formatter = DateFormatter()
+    var titles = ["Repeat", "Label","Sound"]
+    var value = ["Never","Alarm","Ringtone"]
+    var obj = Time()
+    var Formatter = DateFormatter()
+    
+    func setFormatter()
+    {
         Formatter.dateFormat = "h:mm a"
         Formatter.amSymbol = "AM"
         Formatter.pmSymbol = "PM"
+    }
+ 
+    @IBAction func datePickerChanged(_ sender: UIDatePicker)
+    {
+        setFormatter()
         datestring = Formatter.string(from: sender.date)
+    }
+ 
+    
+    @IBAction func save(_ sender: Any)
+    {
+        setFormatter()
+        datestring = Formatter.string(from: datePicker.date)
+        if value[0] == "Never"
+        {
+            value[0] = ""
+        }
         let view = UserDefaults.standard.string(forKey: "view")
         if view == "edit"
         {
-               obj.time = datestring
-            
-        }
-     
-    }
- 
-    
-    @IBAction func save(_ sender: Any) {
- 
-        let time = Time()
-        let Formatter = DateFormatter()
-        Formatter.dateFormat = "h:mm a"
-        Formatter.amSymbol = "AM"
-        Formatter.pmSymbol = "PM"
-        datestring = Formatter.string(from: datePicker.date)
-        if value1[0] == "Never"
-        {
-            value1[0]=""
-        }
-        let view = UserDefaults.standard.string(forKey: "view")
-        if view != "edit"
-        {
-            time.save1(value1,datestring)
+            Time().update(value,datestring,obj)
+            self.navigationController?.popViewController(animated: true)
         }
         else
         {
-            
-            Time().update(value1,datestring,obj)
-            self.navigationController?.popViewController(animated: true)
+           Time().saveTime(value,datestring)
         }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
-        self.navigationController?.navigationBar.backgroundColor = .black
         let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : Any]
-        
+        self.navigationController?.navigationBar.backgroundColor = .black
+        setFormatter()
+        UserDefaults.standard.set("Never", forKey: "repeat")
+        UserDefaults.standard.set("Label", forKey: "label")
         if UserDefaults.standard.string(forKey: "view") == "edit"
         {
-          
-             navigationItem.title = "Edit Alarm"
-            let Formatter = DateFormatter()
-            Formatter.dateFormat = "h:mm a"
-            Formatter.amSymbol = "AM"
-            Formatter.pmSymbol = "PM"
-            let date : Date
-            date = Formatter.date(from: obj.time!)!
-            datePicker.setDate(date, animated: false)
-            value1 = [obj.days!,obj.label!,"Ringtone"]
-         
-            if value1[0] == nil || value1[0] == ""
+            navigationItem.title = "Edit Alarm"
+            datePicker.setDate(Formatter.date(from: obj.time!)!, animated: false)
+            value = [obj.days!,obj.label!,"Ringtone"]
+            if value[0] == ""
             {
-                
-                UserDefaults.standard.set("Never", forKey: "core")
-                value1[0]="Never"
+                value[0] = "Never"
             }
-            else
-            {
-                 UserDefaults.standard.set(value1[0], forKey: "core")
-            }
-           
-            UserDefaults.standard.set(value1[1], forKey: "core1")
+            UserDefaults.standard.set(value[0], forKey: "repeat")
+            UserDefaults.standard.set(value[1], forKey: "label")
         }
         else
         {
-            let Formatter = DateFormatter()
-            Formatter.dateFormat = "h:mm a"
-            Formatter.amSymbol = "AM"
-            Formatter.pmSymbol = "PM"
-            let date : Date
-            date = Formatter.date(from: datestring)!
-            datePicker.setDate(date, animated: false)
+            datePicker.setDate(Formatter.date(from: datestring)!, animated: false)
         }
        
     }
-    @IBAction func cancel(_ sender: Any) {
-        
+    
+    @IBAction func cancel(_ sender: Any)
+    {
         if UserDefaults.standard.string(forKey: "view") == "edit"
         {
             self.navigationController?.popViewController(animated: true)
         }
         self.dismiss(animated: true, completion: nil)
-        
-        
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
+        value[0] = UserDefaults.standard.string(forKey: "repeat")!
+        value[1] =  UserDefaults.standard.string(forKey: "label")!
+        
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
-        var indexPath = IndexPath(row: 0, section: 0)
-        guard let cell = tableView.cellForRow(at: indexPath) as? AddAlarmTableViewCell else {return}
-
         if UserDefaults.standard.string(forKey: "view") == "edit"
         {
-        
             navigationItem.title = "Edit Alarm"
-        
         }
-        var str = UserDefaults.standard.string(forKey: "Day")
-    
-        
-        if str != nil && str != ""
-        {
-            str = str?.substring(to: (str!.index(before: (str!.endIndex))))
-            str = "Every "+str!
-            value1[0] = str!
-            let value2 = value1[indexPath.row]
-            cell.value.text = value2
-            UserDefaults.standard.set(value1[0], forKey: "core")
-            UserDefaults.standard.removeObject(forKey: "Day")
-        }
-        let str1 = UserDefaults.standard.string(forKey: "Label")
-        if str1 != nil && str1 != ""
-        {
-            value1[1] = str1!
-            let indexPath = IndexPath(row: 1, section: 0)
-            guard let cell = tableView.cellForRow(at: indexPath) as? AddAlarmTableViewCell else {return}
-            let value2 = value1[indexPath.row]
-            cell.value.text = value2
-            UserDefaults.standard.set(value1[1], forKey: "core1")
-            UserDefaults.standard.removeObject(forKey: "Label")
-        }
-        let Formatter = DateFormatter()
-        Formatter.dateFormat = "h:mm a"
-        Formatter.amSymbol = "AM"
-        Formatter.pmSymbol = "PM"
+        setFormatter()
         let date : Date
         if UserDefaults.standard.string(forKey: "view") != "edit"
         {
@@ -171,96 +116,49 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             datestring = obj.time!
             
         }
-        if(date != nil)
-        {
-            
-            datePicker.setDate(date, animated: false)
-           
-        }
-        else
-        {
-            datestring = Formatter.string(from: datePicker.date)
-        }
-        
-        
-        
+        datePicker.setDate(date, animated: false)
+        self.tableView.reloadData()
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if section == 0
         {
-             return title1.count
+             return titles.count
         }
         else
         {
             return 1
         }
-        
-       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        
-       if indexPath.section == 0
-       {
-        let cellIdentifier = "AddAlarmTableViewCell1"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AddAlarmTableViewCell
-            else {
-                fatalError("The dequeued cell is not an instance of AddAlarmTableViewCell.")
-        }
-        var str: String? = nil
-        str = UserDefaults.standard.string(forKey: "Day")
-        
-       
-        if str != "" && str != nil
+        if indexPath.section == 0
         {
-            str = str?.substring(to: (str!.index(before: (str!.endIndex))))
-            
-            value1[0] = "Every "+str!
-            UserDefaults.standard.removeObject(forKey: "Day")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlarmTableViewCell1", for: indexPath) as? AddAlarmTableViewCell
+                else {
+                    fatalError("The dequeued cell is not an instance of AddAlarmTableViewCell.")
+            }
+            cell.title.text = titles[indexPath.row]
+            cell.value.text = value[indexPath.row]
+            cell.value.numberOfLines = 1
+            cell.value.minimumScaleFactor = 0.5
+            cell.value.adjustsFontSizeToFitWidth = true
+            UserDefaults.standard.set(value[0], forKey: "repeat")
+            UserDefaults.standard.set(value[1], forKey: "label")
+            return cell
         }
-        
-        let str1 = UserDefaults.standard.string(forKey: "Label")
-        if str1 != nil && str1 != ""
-        {
-            value1[1] = str1!
-            UserDefaults.standard.removeObject(forKey: "Label")
-        }
-        
-        
-            let title2 = title1[indexPath.row]
-            let value2 = value1[indexPath.row]
-            cell.title.text = title2
-            cell.value.text = value2
-        cell.value.numberOfLines = 1
-        cell.value.minimumScaleFactor = 0.5
-        cell.value.adjustsFontSizeToFitWidth = true
-           UserDefaults.standard.set(value1[0], forKey: "core")
-           UserDefaults.standard.set(value1[1], forKey: "core1")
-        
-        return cell
-       }
         else
-       {
-        let cellIdentifier = "AddAlarmTableViewCell2"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AddAlarmTableViewCell
-            else {
-                fatalError("The dequeued cell is not an instance of AddAlarmTableViewCell.")
+        {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlarmTableViewCell2", for: indexPath) as? AddAlarmTableViewCell
+                else {
+                    fatalError("The dequeued cell is not an instance of AddAlarmTableViewCell.")}
+            cell.snooze.text = "Snooze"
+            return cell
         }
-        cell.snooze.text = "Snooze"
-        return cell
-        
-        }
-        
-        
-        
-        
     }
     
   
@@ -286,11 +184,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.navigationController?.pushViewController(resultViewController, animated: true)
         }
-        
-        
-        
-        
-        
     }
 }
     

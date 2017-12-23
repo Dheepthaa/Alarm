@@ -70,7 +70,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="desc1" destination="HHT-Hc-gkF" id="RNJ-BQ-csj"/>
+                                    <outlet property="desc" destination="HHT-Hc-gkF" id="aky-si-Yf0"/>
                                     <outlet property="switch1" destination="Zsh-ge-m0d" id="BSh-6Q-bqg"/>
                                     <outlet property="time" destination="Vba-n4-HVF" id="7NG-zg-xIG"/>
                                 </connections>
